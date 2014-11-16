@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:descendantFocusability="beforeDescendants"
+    android:background="@color/fondo"
+    android:gravity="center"
+    android:focusableInTouchMode="true" >
+    
+
+
+<LinearLayout
+android:layout_width="fill_parent"
+android:layout_height="40dp"
+android:layout_marginLeft="5dp"
+android:layout_marginRight="5dp"
+android:layout_marginTop="5dp"
+android:layout_weight="1"
+android:background="@drawable/titulo"
+android:gravity="center"
+android:orientation="horizontal" >
+    <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="40dp" 
+    android:gravity="center"
+    android:layout_weight="4"
+    android:layout_marginRight="2dp" 
+    android:background="@drawable/icon"
+    android:orientation="vertical">
+
+    </LinearLayout>
+    <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" 
+    android:gravity="center"
+    android:layout_weight="1"
+    android:orientation="vertical">
+    <TextView
+    android:id="@+id/lblMenu"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/str_menu"
+    android:textStyle="bold"
+    android:gravity="center"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:textColor="@color/cabecera_titulo" />
+
+    </LinearLayout>
+
+    <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" 
+    android:gravity="center"
+    android:layout_weight="4"
+    android:layout_marginRight="2dp" 
+    android:orientation="vertical">
+    <Button
+    android:layout_width="25dp"
+    android:layout_height="25dp"    
+    android:background="@drawable/icon_share"
+    android:onClick="btnShare"/>	
+
+    </LinearLayout>
+</LinearLayout>
+
+
+
+
+<LinearLayout
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:layout_marginLeft="5dp"
+android:layout_marginRight="5dp"
+android:layout_marginTop="10dp"
+android:background="@drawable/contenido"
+android:gravity="center"
+android:layout_weight="8"
+android:orientation="vertical" >
+
+ <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+    android:layout_weight="1"
+     android:gravity="center"
+    android:orientation="horizontal">
+
+            <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" 
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <Button
+            android:layout_width="90sp"
+            android:layout_height="90sp" 
+            android:background="@drawable/btn_sqlite"
+            android:onClick="btnSqlite"/>	
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_crud_sqlite"
+            android:gravity="center"
+            android:textColor="@color/col2_texto"
+            android:typeface="monospace"
+            android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" 
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <Button
+            android:layout_width="90sp"
+            android:layout_height="90sp" 
+            android:background="@drawable/btn_mapas"
+            android:onClick="btnMapas"/>	
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/str_mapa"
+            android:textColor="@color/col2_texto"
+            android:typeface="monospace"
+            android:textSize="15sp" />
+            </LinearLayout>
+
+    </LinearLayout>
+
+ <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+    android:layout_weight="1"
+    android:orientation="horizontal">
+
+            <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" 
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <Button
+            android:layout_width="90sp"
+            android:layout_height="90sp" 
+            android:background="@drawable/btn_codigos"
+            android:onClick="btnCodigos"/>	
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_gernerar_codigo"
+            android:gravity="center"
+            android:textColor="@color/col2_texto"
+            android:typeface="monospace"
+            android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" 
+            android:gravity="center"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <Button
+            android:layout_width="90sp"
+            android:layout_height="90sp" 
+            android:background="@drawable/btn_preguntar"
+            android:onClick="btnPreguntas"/>	
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/str_agregar_pregunta"
+            android:textColor="@color/col2_texto"
+            android:typeface="monospace"
+            android:textSize="15sp" />
+            </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+
+
+<LinearLayout 
+android:layout_width="fill_parent"
+android:layout_height="wrap_content" 
+android:gravity="center_vertical" 
+android:layout_marginLeft="5dp"
+android:layout_marginRight="5dp"
+android:layout_marginTop="10dp"
+android:layout_weight="1"
+android:orientation="vertical">
+    <TextView
+  android:id="@+id/lblLink"
+  android:textSize="13dp"
+  android:gravity="center"
+  android:textColor="@color/boton_inicio"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"                         
+  android:textStyle="bold"/>
+</LinearLayout>
+
+
+
+                            
+</LinearLayout>
