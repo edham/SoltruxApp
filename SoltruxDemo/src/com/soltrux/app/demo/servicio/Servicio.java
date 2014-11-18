@@ -3,21 +3,22 @@ package com.soltrux.app.demo.servicio;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import java.util.Timer;
-import java.util.TimerTask;
 import android.app.Service;
 import android.content.Context;
 import static android.content.Context.NOTIFICATION_SERVICE;
 import android.content.Intent;
 import android.os.IBinder;
 import android.widget.RemoteViews;
-import com.soltrux.app.demo.ui.MenuActivity;
 import com.soltrux.app.demo.entidades.clsUsuarioMovil;
 import com.soltrux.app.demo.http.http;
 import com.soltrux.app.demo.sqlite.clsUsuarioMovilSQL;
+import com.soltrux.app.demo.ui.MainActivity;
+import com.soltrux.app.demo.ui.R;
 import com.soltrux.app.demo.utilidades.utilidades;
 
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Servicio extends Service {
 
@@ -57,11 +58,11 @@ public class Servicio extends Service {
                                           
                                         if(EstadoServicio())
                                         {
-                                            String dato=http.getPregunta();
-                                            if(!dato.equals("") && !dato.equals(null))
-                                            Notificacion(dato.trim());
-                                            else
-                                                borrarNotificacion();
+//                                            String dato=http.getPregunta();
+//                                            if(!dato.equals("") && !dato.equals(null))
+//                                            Notificacion(dato.trim());
+//                                            else
+//                                                borrarNotificacion();
                                         }
 
                                       }                                   
@@ -108,15 +109,15 @@ public void borrarNotificacion()
 public void Notificacion(String Motivo){
     	
         NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
-        Notification notification = new Notification(R.drawable.icon, getString(R.string.str_pregunte_actual), System.currentTimeMillis());
+        Notification notification = new Notification(R.drawable.ic_launcher, getString(R.string.str_pregunte_actual), System.currentTimeMillis());
         
         RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notification);
-        contentView.setImageViewResource(R.id.img_notification, R.drawable.icon);
+        contentView.setImageViewResource(R.id.img_notification, R.drawable.ic_launcher);
         contentView.setTextViewText(R.id.txt_notification, Motivo);
         
         notification.contentView = contentView;
         
-        Intent notificationIntent = new Intent(this.getApplicationContext(), MenuActivity.class);
+        Intent notificationIntent = new Intent(this.getApplicationContext(), MainActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this.getApplicationContext(), 0, notificationIntent, 0);
         notification.contentIntent = contentIntent;
         

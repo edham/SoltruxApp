@@ -9,6 +9,6 @@ package com.soltrux.app.demo.ui;
 
 public final class Manifest {
     public static final class permission {
-        public static final String MAPS_RECEIVE="com.soltrux.app.demo.uipermission.MAPS_RECEIVE";
+        public static final String MAPS_RECEIVE="com.soltrux.app.demo.ui.permission.MAPS_RECEIVE";
     }
 }

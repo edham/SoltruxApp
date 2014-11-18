@@ -23,7 +23,7 @@
         android:gravity="center"
         android:layout_weight="4"
         android:layout_marginRight="2dp" 
-         android:background="@drawable/icon"
+         android:background="@drawable/ic_launcher"
         android:orientation="vertical">
 
         </LinearLayout>
@@ -87,7 +87,19 @@
 
 
 
- 
+  <Button
+        android:id="@+id/btnNuevo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"                                         
+        android:text="@string/str_registro_usario"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/boton2"
+        android:textColor="@color/boton_texto"
+        android:onClick="btnItinerarios"/>	
 
 
     

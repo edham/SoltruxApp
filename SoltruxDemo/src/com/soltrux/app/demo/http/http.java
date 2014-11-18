@@ -56,104 +56,104 @@ public class http {
 }
 
    
-      public static String setGrabarUsuarioMovil(clsUsuarioMovil entidad) 
-    {
-    client = new DefaultHttpClient();
-    HttpPost httppost = new HttpPost(url);
-
-    try {
-        List<NameValuePair> Value = new ArrayList<NameValuePair>(5);
-        Value.add(new BasicNameValuePair("idServicio", "1"));
-        Value.add(new BasicNameValuePair("nombres",entidad.getStr_nombres())); 
-        Value.add(new BasicNameValuePair("apellidos",entidad.getStr_apellidos()));  
-        Value.add(new BasicNameValuePair("email",entidad.getStr_email()));   
-        Value.add(new BasicNameValuePair("telefono",entidad.getStr_telefono()));
-        httppost.setEntity(new UrlEncodedFormEntity(Value));
-        responseGet = client.execute(httppost);
-        resEntityGet = responseGet.getEntity();
-        if (resEntityGet != null) {
-                return  EntityUtils.toString(resEntityGet).trim();
-        }
-        } catch (ClientProtocolException e) {
-            return "-1";
-        } catch (IOException e) {
-            return "-1";
-        }
-     return "-1";
-} 
-
-      
-    public static String setActualizaUsuarioMovil(clsUsuarioMovil entidad) 
-    {
-    client = new DefaultHttpClient();
-    HttpPost httppost = new HttpPost(url);
-
-    try {
-        List<NameValuePair> Value = new ArrayList<NameValuePair>(6);
-        Value.add(new BasicNameValuePair("IdServicio", "13"));
-         Value.add(new BasicNameValuePair("idUsuario",""+entidad.getInt_id_usuario_movil())); 
-        Value.add(new BasicNameValuePair("nombres",entidad.getStr_nombres())); 
-        Value.add(new BasicNameValuePair("apellidos",entidad.getStr_apellidos()));  
-        Value.add(new BasicNameValuePair("email",entidad.getStr_email()));   
-        Value.add(new BasicNameValuePair("telefono",entidad.getStr_telefono()));
-        httppost.setEntity(new UrlEncodedFormEntity(Value));
-        responseGet = client.execute(httppost);
-        resEntityGet = responseGet.getEntity();
-        if (resEntityGet != null) {
-                return  EntityUtils.toString(resEntityGet).trim();
-        }
-        } catch (ClientProtocolException e) {
-            return "-1";
-        } catch (IOException e) {
-            return "-1";
-        }
-     return "-1";
-} 
-   public static String setPregunta(int idUsuario,String pregunta) 
-    {
-    client = new DefaultHttpClient();
-    HttpPost httppost = new HttpPost(url);
-
-    try {
-        List<NameValuePair> Value = new ArrayList<NameValuePair>(3);
-        Value.add(new BasicNameValuePair("idServicio", "3"));
-        Value.add(new BasicNameValuePair("pregunta", pregunta));
-        Value.add(new BasicNameValuePair("idUsuario", ""+idUsuario));
-        httppost.setEntity(new UrlEncodedFormEntity(Value));
-        responseGet = client.execute(httppost);
-        resEntityGet = responseGet.getEntity();
-        if (resEntityGet != null) {
-                return  EntityUtils.toString(resEntityGet).trim();
-        }
-        } catch (ClientProtocolException e) {
-            return "-1";
-        } catch (IOException e) {
-            return "-1";
-        }
-     return "-1";
-}
-
-    public static String getPregunta() 
-    {
-    client = new DefaultHttpClient();
-    HttpPost httppost = new HttpPost(url);
-
-    try {
-        List<NameValuePair> Value = new ArrayList<NameValuePair>(2);
-        Value.add(new BasicNameValuePair("idServicio", "4"));
-        httppost.setEntity(new UrlEncodedFormEntity(Value));
-        responseGet = client.execute(httppost);
-        resEntityGet = responseGet.getEntity();
-        if (resEntityGet != null) {
-                return  EntityUtils.toString(resEntityGet).trim();
-        }
-        } catch (ClientProtocolException e) {
-            return "-1";
-        } catch (IOException e) {
-            return "-1";
-        }
-     return "-1";
-}
+//      public static String setGrabarUsuarioMovil(clsUsuarioMovil entidad) 
+//    {
+//    client = new DefaultHttpClient();
+//    HttpPost httppost = new HttpPost(url);
+//
+//    try {
+//        List<NameValuePair> Value = new ArrayList<NameValuePair>(5);
+//        Value.add(new BasicNameValuePair("idServicio", "1"));
+//        Value.add(new BasicNameValuePair("nombres",entidad.getStr_nombres())); 
+//        Value.add(new BasicNameValuePair("apellidos",entidad.getStr_apellidos()));  
+//        Value.add(new BasicNameValuePair("email",entidad.getStr_email()));   
+//        Value.add(new BasicNameValuePair("telefono",entidad.getStr_telefono()));
+//        httppost.setEntity(new UrlEncodedFormEntity(Value));
+//        responseGet = client.execute(httppost);
+//        resEntityGet = responseGet.getEntity();
+//        if (resEntityGet != null) {
+//                return  EntityUtils.toString(resEntityGet).trim();
+//        }
+//        } catch (ClientProtocolException e) {
+//            return "-1";
+//        } catch (IOException e) {
+//            return "-1";
+//        }
+//     return "-1";
+//} 
+//
+//      
+//    public static String setActualizaUsuarioMovil(clsUsuarioMovil entidad) 
+//    {
+//    client = new DefaultHttpClient();
+//    HttpPost httppost = new HttpPost(url);
+//
+//    try {
+//        List<NameValuePair> Value = new ArrayList<NameValuePair>(6);
+//        Value.add(new BasicNameValuePair("IdServicio", "13"));
+//         Value.add(new BasicNameValuePair("idUsuario",""+entidad.getInt_id_usuario_movil())); 
+//        Value.add(new BasicNameValuePair("nombres",entidad.getStr_nombres())); 
+//        Value.add(new BasicNameValuePair("apellidos",entidad.getStr_apellidos()));  
+//        Value.add(new BasicNameValuePair("email",entidad.getStr_email()));   
+//        Value.add(new BasicNameValuePair("telefono",entidad.getStr_telefono()));
+//        httppost.setEntity(new UrlEncodedFormEntity(Value));
+//        responseGet = client.execute(httppost);
+//        resEntityGet = responseGet.getEntity();
+//        if (resEntityGet != null) {
+//                return  EntityUtils.toString(resEntityGet).trim();
+//        }
+//        } catch (ClientProtocolException e) {
+//            return "-1";
+//        } catch (IOException e) {
+//            return "-1";
+//        }
+//     return "-1";
+//} 
+//   public static String setPregunta(int idUsuario,String pregunta) 
+//    {
+//    client = new DefaultHttpClient();
+//    HttpPost httppost = new HttpPost(url);
+//
+//    try {
+//        List<NameValuePair> Value = new ArrayList<NameValuePair>(3);
+//        Value.add(new BasicNameValuePair("idServicio", "3"));
+//        Value.add(new BasicNameValuePair("pregunta", pregunta));
+//        Value.add(new BasicNameValuePair("idUsuario", ""+idUsuario));
+//        httppost.setEntity(new UrlEncodedFormEntity(Value));
+//        responseGet = client.execute(httppost);
+//        resEntityGet = responseGet.getEntity();
+//        if (resEntityGet != null) {
+//                return  EntityUtils.toString(resEntityGet).trim();
+//        }
+//        } catch (ClientProtocolException e) {
+//            return "-1";
+//        } catch (IOException e) {
+//            return "-1";
+//        }
+//     return "-1";
+//}
+//
+//    public static String getPregunta() 
+//    {
+//    client = new DefaultHttpClient();
+//    HttpPost httppost = new HttpPost(url);
+//
+//    try {
+//        List<NameValuePair> Value = new ArrayList<NameValuePair>(2);
+//        Value.add(new BasicNameValuePair("idServicio", "4"));
+//        httppost.setEntity(new UrlEncodedFormEntity(Value));
+//        responseGet = client.execute(httppost);
+//        resEntityGet = responseGet.getEntity();
+//        if (resEntityGet != null) {
+//                return  EntityUtils.toString(resEntityGet).trim();
+//        }
+//        } catch (ClientProtocolException e) {
+//            return "-1";
+//        } catch (IOException e) {
+//            return "-1";
+//        }
+//     return "-1";
+//}
 
 
 }

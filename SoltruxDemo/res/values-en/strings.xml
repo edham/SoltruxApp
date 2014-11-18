@@ -1,40 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Soltrux</string>
-    <string name="str_cambiar_ingles">Change English</string>
-    <string name="str_cambiar_espanol">Change Spanish</string>
-    <string name="str_cerrar_sesion">Logout</string>
-    
-    <string name="str_registro_usario">Register User</string>
-    
-    <string name="str_lista_personas">User List</string>
-    <string name="str_genrardor_codigo">Code Generator</string>
-    
-    <string name="str_agregar_persona">Add User</string>
-    <string name="str_filtrar_persona">Filter ...</string>
-    
-    <string name="str_ingresar_nombre">Enter Name</string>
+
+    <string name="action_settings">About me</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="drawer_open">Open drawer</string>
+    <string name="drawer_close">Close drawer</string>
+
+
+    <string name="str_pregunte_actual">Actual question</string>
+    <string name="str_espere">Wait a moment . . .</string>
+     <string name="str_lista_personas">LIST OF PERSONS</string>
+     <string name="str_filtrar_persona">Filter ...</string>
+     
+      <string name="str_ingresar_nombre">Enter Name</string>
     <string name="str_ingresar_apellido">Enter Last Name</string>
     <string name="str_ingresar_numero">Enter Cell Phone Number</string>
     <string name="str_registro_numero_valido">Enter a 9 digits number</string>
      <string name="str_registro_correcto">Succesful Operation</string>
-    
-    <string name="str_escriba_texto">Write a text</string>
-    
-    <string name="str_codigo_persona">User code: </string>
-    <string name="str_nombres_persona">Name:</string>
-    <string name="str_apellidos_persona">Last Name:</string>
-    <string name="str_edad_persona">Age:</string>
-    <string name="str_sexo_persona">Sex:</string>
-    
-    <string name="str_desea_eliminar">Delete?</string>
-     <string name="str_desea_actualizar">Update?</string>
-      <string name="str_desea_registrarse">Register?</string>
-      <string name="str_desea_pregunta">You need to register before making a question.</string>
-      <string name="str_conexion_internet">Check your Internet conectivity</string>
-    <string name="str_espere">Wait a moment . . .</string>
-    <string name="str_pregunte_actual">Actual question</string>
-    
+     <string name="str_registro_usario">Register User</string>
      <string name="btn_registrar">Register</string>
      <string name="btn_omitir">Skip</string>
      <string name="btn_cancelar">Cancel</string>
@@ -43,40 +26,22 @@
      <string name="btn_aceptar">OK</string>
      <string name="btn_actualizar">Update</string>
      <string name="btn_generar">Generate Code</string>
-     <string name="str_latitud">Latitude:</string>
-     <string name="str_logintud">Longitude:</string>
-     
      
      <string name="str_compartir_con">Share with</string>
      <string name="str_compartir_via">Share trough</string>
     <string name="str_compartir_sms">Dont Forget to give us a like in our fanpage SolTrux https://www.facebook.com/soltrux</string>
     
-    <string name="str_ingresar_pregunta">Add a question about todays theme</string>
+    <string name="str_codigo_persona">User code: </string>
+    <string name="str_nombres_persona">Name:</string>
+    <string name="str_apellidos_persona">Last Name:</string>
+    <string name="str_edad_persona">Age:</string>
+    <string name="str_sexo_persona">Sex:</string>
     
-    <string name="str_agregar_pregunta">ADD QUESTION</string>
-    <string name="str_gernerar_codigo">GENERATE CODE</string>
-    <string name="str_crud_sqlite">CRUD SQLITE</string>
-    <string name="str_mapa">MAP</string>
-    
-     <string name="str_menu">MENU</string>
-
-    
-    
-    
-    
-    
-    <string name="web"><![CDATA[<a href="http://soltrux.org/">SOLTRUX © 2014</a><br>by EdHam]]></string> 
-    
-    
-    
+     <string name="str_desea_eliminar">Delete?</string>
+     <string name="str_desea_actualizar">Update?</string>
+     
 <string-array name="array_sexo">
 <item >Man</item>
 <item >Woman</item>  
 </string-array>
-
- 
-  <string-array name="array_codigo">
-<item >Code QR</item>
-<item >Bar Code</item>  
-</string-array> 
 </resources>

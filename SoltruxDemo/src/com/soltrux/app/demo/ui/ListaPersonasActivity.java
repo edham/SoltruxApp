@@ -174,30 +174,6 @@ public class ListaPersonasActivity extends Activity {
         
          
 
-             
-     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-      
-            MenuInflater inflater = getMenuInflater();
-            inflater.inflate(R.menu.menu_persona, menu);   
-            return true;
-       
-    }
-       @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-        case R.id.MnuOpc1:          
-                    Intent i=new Intent(this,PersonaActivity.class);
-                     i.putExtra("IdPersona","0");
-                    startActivity(i);
-                
-
-                return true;
-           default:
-            return super.onOptionsItemSelected(item);
-        }
-    }
       public void btnShare(View v)
     {
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND); 

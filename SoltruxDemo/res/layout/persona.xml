@@ -34,7 +34,7 @@ android:layout_width="fill_parent"
         android:gravity="center"
         android:layout_weight="4"
         android:layout_marginRight="2dp" 
-         android:background="@drawable/icon"
+         android:background="@drawable/ic_launcher"
         android:orientation="vertical">
 
         </LinearLayout>

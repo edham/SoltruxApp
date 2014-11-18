@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -19,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.soltrux.app.demo.entidades.clsPersona;
 import com.soltrux.app.demo.sqlite.clsPersonaSQL;
-import com.soltrux.app.demo.sqlite.clsUsuarioMovilSQL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -68,25 +66,26 @@ public class PersonaActivity extends Activity
         ArrayAdapter<String> adapterSexo = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,listSexo);       
         adapterSexo.setDropDownViewResource(android.R.layout.simple_spinner_item);
         ComboSexo.setAdapter(adapterSexo); 
-         ComboSexo.setSelection(0);
+        ComboSexo.setSelection(0);
          
-         final Calendar c = Calendar.getInstance();        
+        final Calendar c = Calendar.getInstance();        
     	mYear1 = c.get(Calendar.YEAR);        
     	mMonth1 = c.get(Calendar.MONTH);        
     	mDay1 = c.get(Calendar.DAY_OF_MONTH);  
         updateDisplay();  
         txtApellidos.setText("");                
         txtNombres.setText("");
+        
         if(IdPersona>0)
         {
-        clsPersona=clsPersonaSQL.Buscar(this, IdPersona);
-        txtApellidos.setText(clsPersona.getStr_apellidos());                
-        txtNombres.setText(clsPersona.getStr_nombres());
-        if(!clsPersona.isBol_sexo())
-        ComboSexo.setSelection(1);
-        SimpleDateFormat  fecha=new SimpleDateFormat("dd/MM/yyyy");
-        lblFecha.setText(fecha.format(clsPersona.getDat_fecha_nacimiento()));
-        lblIdPersona.setText(getString(R.string.str_codigo_persona)+" "+clsPersona.getInt_id_persona());
+            clsPersona=clsPersonaSQL.Buscar(this, IdPersona);
+            txtApellidos.setText(clsPersona.getStr_apellidos());                
+            txtNombres.setText(clsPersona.getStr_nombres());
+            if(!clsPersona.isBol_sexo())
+            ComboSexo.setSelection(1);
+            SimpleDateFormat  fecha=new SimpleDateFormat("dd/MM/yyyy");
+            lblFecha.setText(fecha.format(clsPersona.getDat_fecha_nacimiento()));
+            lblIdPersona.setText(getString(R.string.str_codigo_persona)+" "+clsPersona.getInt_id_persona());
         }
         
     }
