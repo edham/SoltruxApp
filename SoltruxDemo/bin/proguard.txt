@@ -1,7 +1,7 @@
 # view res/layout/activity_main.xml #generated:1
 -keep class android.support.v4.widget.DrawerLayout { <init>(...); }
 
-# view res/layout/fragment_layout_mapa.xml #generated:9
+# view res/layout/fragment_mapa.xml #generated:9
 -keep class com.google.android.gms.maps.SupportMapFragment { <init>(...); }
 
 # view AndroidManifest.xml #generated:55
@@ -10,6 +10,6 @@
 # view AndroidManifest.xml #generated:46
 -keep class com.soltrux.app.demo.ui.MainActivity { <init>(...); }
 
-# onClick res/layout/lista_personas.xml #generated:60
+# onClick res/layout/fragment_lista_personas.xml #generated:60
 -keepclassmembers class * { *** btnItinerarios(...); }
 

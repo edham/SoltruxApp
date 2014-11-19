@@ -73,7 +73,7 @@ public class FragmentListaPersonas extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View view = inflater.inflate(R.layout.lista_personas, container,
+		View view = inflater.inflate(R.layout.fragment_lista_personas, container,
 				false);
 		return view;
 	}

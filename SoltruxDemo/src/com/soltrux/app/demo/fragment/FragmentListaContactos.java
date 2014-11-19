@@ -65,7 +65,7 @@ public class FragmentListaContactos extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View view = inflater.inflate(R.layout.lista_contactos, container,
+		View view = inflater.inflate(R.layout.fragment_lista_contactos, container,
 				false);
 		return view;
 	}

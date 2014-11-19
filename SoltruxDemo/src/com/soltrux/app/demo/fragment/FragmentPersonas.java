@@ -119,7 +119,7 @@ public class FragmentPersonas extends Fragment  {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View view = inflater.inflate(R.layout.persona, container,
+		View view = inflater.inflate(R.layout.fragment_persona, container,
 				false);
                 
                 IdPersona=getArguments().getInt("IdPersona");

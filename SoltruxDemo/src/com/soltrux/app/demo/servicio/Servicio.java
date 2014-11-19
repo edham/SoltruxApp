@@ -111,7 +111,7 @@ public void Notificacion(String Motivo){
         NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         Notification notification = new Notification(R.drawable.ic_launcher, getString(R.string.str_pregunte_actual), System.currentTimeMillis());
         
-        RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notification);
+        RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.bar_notification);
         contentView.setImageViewResource(R.id.img_notification, R.drawable.ic_launcher);
         contentView.setTextViewText(R.id.txt_notification, Motivo);
         

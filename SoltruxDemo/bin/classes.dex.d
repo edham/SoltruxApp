@@ -43,8 +43,6 @@ C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\f
 C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\fragment\FragmentSMS$1.class \
 C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\fragment\FragmentSMS$2.class \
 C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\fragment\FragmentSMS.class \
-C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\fragment\FragmentThree.class \
-C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\fragment\FragmentTwo.class \
 C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\http\http.class \
 C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\route\GoogleParser.class \
 C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\route\Parser.class \

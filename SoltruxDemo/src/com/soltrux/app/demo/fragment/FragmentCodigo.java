@@ -37,7 +37,7 @@ public class FragmentCodigo extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View view = inflater.inflate(R.layout.codigo_qr, container,
+		View view = inflater.inflate(R.layout.fragment_codigo_qr, container,
 				false);
 
                 btnGenerar = (Button) view.findViewById(R.id.btnGenerar);

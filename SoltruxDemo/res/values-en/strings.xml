@@ -54,6 +54,9 @@
     <string name="str_gernerar_codigo">GENERATE CODE</string>
     <string name="str_crud_sqlite">CRUD SQLITE</string>
     <string name="str_mapa">MAP</string>
+    <string name="str_contactos">CONTACTS</string>
+    <string name="str_servicio">SERVICE</string>
+     <string name="str_salir">EXIT</string>
     
      <string name="str_ingrese_mensaje">Enter text message</string>
      

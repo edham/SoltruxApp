@@ -28,8 +28,6 @@ import com.soltrux.app.demo.fragment.FragmentListaContactos;
 import com.soltrux.app.demo.fragment.FragmentListaPersonas;
 import com.soltrux.app.demo.fragment.FragmentMapa;
 import com.soltrux.app.demo.fragment.FragmentOne;
-import com.soltrux.app.demo.fragment.FragmentThree;
-import com.soltrux.app.demo.fragment.FragmentTwo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,18 +66,12 @@ public class MainActivity extends FragmentActivity {
 		dataList.add(new clsDrawerItem(getString(R.string.str_mapa), R.drawable.ic_action_good));
 		dataList.add(new clsDrawerItem(getString(R.string.str_crud_sqlite), R.drawable.ic_action_gamepad));
 		dataList.add(new clsDrawerItem(getString(R.string.str_gernerar_codigo), R.drawable.ic_action_labels));                
-		dataList.add(new clsDrawerItem(getString(R.string.str_agregar_pregunta), R.drawable.ic_action_search));
-                
-		dataList.add(new clsDrawerItem("Cloud", R.drawable.ic_action_cloud));
-		dataList.add(new clsDrawerItem("Camara", R.drawable.ic_action_camera));
-		dataList.add(new clsDrawerItem("Video", R.drawable.ic_action_video));
-		dataList.add(new clsDrawerItem("Groups", R.drawable.ic_action_group));
-		dataList.add(new clsDrawerItem("Import & Export",
-				R.drawable.ic_action_import_export));
-		dataList.add(new clsDrawerItem("About", R.drawable.ic_action_about));
-		dataList.add(new clsDrawerItem("Settings", R.drawable.ic_action_settings));
-		dataList.add(new clsDrawerItem("Help", R.drawable.ic_action_help));
-
+		dataList.add(new clsDrawerItem(getString(R.string.str_contactos), R.drawable.ic_action_cloud));
+                dataList.add(new clsDrawerItem(getString(R.string.str_agregar_pregunta), R.drawable.ic_action_search));                
+		
+		dataList.add(new clsDrawerItem(getString(R.string.str_servicio), R.drawable.ic_action_camera));
+		dataList.add(new clsDrawerItem(getString(R.string.str_salir), R.drawable.ic_action_video));
+		
 		adapter = new CustomDrawerAdapter(this, R.layout.custom_drawer_item,
 				dataList);
 
@@ -146,39 +138,23 @@ public class MainActivity extends FragmentActivity {
 					.getImgResID());
 			break;
 		case 1:
-                            fragment = new FragmentMapa();
-                            args.putString(FragmentTwo.ITEM_NAME, dataList.get(posicion)
-                                            .getItemName());
-                            args.putInt(FragmentTwo.IMAGE_RESOURCE_ID, dataList.get(posicion)
-                                            .getImgResID());
+                       fragment = new FragmentMapa();
 			break;
 		case 2:
                     
 			fragment = new FragmentListaPersonas();
-			args.putString(FragmentThree.ITEM_NAME, dataList.get(posicion)
-					.getItemName());
-			args.putInt(FragmentThree.IMAGE_RESOURCE_ID, dataList.get(posicion)
-					.getImgResID());
 			break;
 		case 3:
 			fragment = new FragmentCodigo();
-			args.putString(FragmentOne.ITEM_NAME, dataList.get(posicion)
-					.getItemName());
-			args.putInt(FragmentOne.IMAGE_RESOURCE_ID, dataList.get(posicion)
-					.getImgResID());
 			break;
 		case 4:
 			fragment = new FragmentListaContactos();
-			args.putString(FragmentTwo.ITEM_NAME, dataList.get(posicion)
-					.getItemName());
-			args.putInt(FragmentTwo.IMAGE_RESOURCE_ID, dataList.get(posicion)
-					.getImgResID());
 			break;
 		case 5:
-			fragment = new FragmentThree();
-			args.putString(FragmentThree.ITEM_NAME, dataList.get(posicion)
+			fragment = new FragmentOne();
+			args.putString(FragmentOne.ITEM_NAME, dataList.get(posicion)
 					.getItemName());
-			args.putInt(FragmentThree.IMAGE_RESOURCE_ID, dataList.get(posicion)
+			args.putInt(FragmentOne.IMAGE_RESOURCE_ID, dataList.get(posicion)
 					.getImgResID());
 			break;
 		case 6:
@@ -188,48 +164,12 @@ public class MainActivity extends FragmentActivity {
 			args.putInt(FragmentOne.IMAGE_RESOURCE_ID, dataList.get(posicion)
 					.getImgResID());
 			break;
-		case 7:
-			fragment = new FragmentTwo();
-			args.putString(FragmentTwo.ITEM_NAME, dataList.get(posicion)
-					.getItemName());
-			args.putInt(FragmentTwo.IMAGE_RESOURCE_ID, dataList.get(posicion)
-					.getImgResID());
-			break;
-		case 8:
-			fragment = new FragmentThree();
-			args.putString(FragmentThree.ITEM_NAME, dataList.get(posicion)
-					.getItemName());
-			args.putInt(FragmentThree.IMAGE_RESOURCE_ID, dataList.get(posicion)
-					.getImgResID());
-			break;
-		case 9:
-			fragment = new FragmentOne();
-			args.putString(FragmentOne.ITEM_NAME, dataList.get(posicion)
-					.getItemName());
-			args.putInt(FragmentOne.IMAGE_RESOURCE_ID, dataList.get(posicion)
-					.getImgResID());
-			break;
-		case 10:
-			fragment = new FragmentTwo();
-			args.putString(FragmentTwo.ITEM_NAME, dataList.get(posicion)
-					.getItemName());
-			args.putInt(FragmentTwo.IMAGE_RESOURCE_ID, dataList.get(posicion)
-					.getImgResID());
-			break;
-		case 11:
-			fragment = new FragmentThree();
-			args.putString(FragmentThree.ITEM_NAME, dataList.get(posicion)
-					.getItemName());
-			args.putInt(FragmentThree.IMAGE_RESOURCE_ID, dataList.get(posicion)
-					.getImgResID());
-			break;
-		case 12:
-			fragment = new FragmentOne();
-			args.putString(FragmentOne.ITEM_NAME, dataList.get(posicion)
-					.getItemName());
-			args.putInt(FragmentOne.IMAGE_RESOURCE_ID, dataList.get(posicion)
-					.getImgResID());
-			break;
+	
+	
+	
+
+
+
 		default:
 			break;
 		}                

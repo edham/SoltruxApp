@@ -127,7 +127,7 @@ public class FragmentMapa extends Fragment implements LocationListener,OnMapClic
 	 @Override
 	 public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	   Bundle savedInstanceState) {
-	  View myFragmentView = inflater.inflate(R.layout.fragment_layout_mapa, container, false);
+	  View myFragmentView = inflater.inflate(R.layout.fragment_mapa, container, false);
           
 	  return myFragmentView;
 	 }
