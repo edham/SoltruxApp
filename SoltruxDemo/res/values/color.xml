@@ -16,4 +16,9 @@
      
       <color name="col2">#4fbfcb</color>
       <color name="col2_texto">#0062a9</color>
+      
+      
+      <color name="gris_oscuro">#dbdbdb</color>
+      <color name="blanco">#ffffff</color>
+      <color name="negro">#000000</color>
 </resources>

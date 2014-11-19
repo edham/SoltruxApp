@@ -27,7 +27,8 @@
      <string name="btn_aceptar">Aceptar</string>
      <string name="btn_actualizar">Actualizar</string>
      <string name="btn_generar">Generar Codigo</string>
-
+      <string name="btn_aceptar">Enviar</string>
+      
       <string name="str_compartir_con">Compartir con</string>
      <string name="str_compartir_via">Compartir via</string>
     <string name="str_compartir_sms">No se olviden de darle me gusta al fanpage de SolTrux https://www.facebook.com/soltrux</string>
@@ -38,14 +39,32 @@
     <string name="str_edad_persona">Edad:</string>
     <string name="str_sexo_persona">Sexo:</string>
     
+    <string name="str_numero">Número:</string>
+    
      <string name="str_desea_eliminar">Desea Eliminar?</string>
      <string name="str_desea_actualizar">Desea Actualizar?</string>
      
+     <string name="str_desea_llamar">Desea Llamar?</string>
+     <string name="str_desea_sms">Desea enviar un SMS?</string>
      
+     
+     <string name="str_genrardor_codigo">Generador de Codigo</string>
+     <string name="str_escriba_texto">Escriba un Texto</string>
+     
+     <string name="str_agregar_pregunta">AGREGAR PREGUNTA</string>
+    <string name="str_gernerar_codigo">GENERAR CODIGO</string>
+    <string name="str_crud_sqlite">CRUD SQLITE</string>
+    <string name="str_mapa">MAPA</string>
+    
+    <string name="str_ingrese_mensaje">Ingrese mensaje de texto</string>
     
 <string-array name="array_sexo">
 <item >Hombre</item>
 <item >Mujer</item>  
 </string-array>
 
+<string-array name="array_codigo">
+<item >Codigo QR</item>
+<item >Codigo de Barras</item>  
+</string-array> 
 </resources>

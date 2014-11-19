@@ -23,6 +23,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.soltrux.app.demo.entidades.clsDrawerItem;
+import com.soltrux.app.demo.fragment.FragmentCodigo;
+import com.soltrux.app.demo.fragment.FragmentListaContactos;
 import com.soltrux.app.demo.fragment.FragmentListaPersonas;
 import com.soltrux.app.demo.fragment.FragmentMapa;
 import com.soltrux.app.demo.fragment.FragmentOne;
@@ -60,11 +62,14 @@ public class MainActivity extends FragmentActivity {
 				GravityCompat.START);
 
 		// Add Drawer Item to dataList
+                
+                
 		dataList.add(new clsDrawerItem("Message", R.drawable.ic_action_email));
-		dataList.add(new clsDrawerItem("Likes", R.drawable.ic_action_good));
-		dataList.add(new clsDrawerItem("Games", R.drawable.ic_action_gamepad));
-		dataList.add(new clsDrawerItem("Lables", R.drawable.ic_action_labels));
-		dataList.add(new clsDrawerItem("Search", R.drawable.ic_action_search));
+		dataList.add(new clsDrawerItem(getString(R.string.str_mapa), R.drawable.ic_action_good));
+		dataList.add(new clsDrawerItem(getString(R.string.str_crud_sqlite), R.drawable.ic_action_gamepad));
+		dataList.add(new clsDrawerItem(getString(R.string.str_gernerar_codigo), R.drawable.ic_action_labels));                
+		dataList.add(new clsDrawerItem(getString(R.string.str_agregar_pregunta), R.drawable.ic_action_search));
+                
 		dataList.add(new clsDrawerItem("Cloud", R.drawable.ic_action_cloud));
 		dataList.add(new clsDrawerItem("Camara", R.drawable.ic_action_camera));
 		dataList.add(new clsDrawerItem("Video", R.drawable.ic_action_video));
@@ -156,14 +161,14 @@ public class MainActivity extends FragmentActivity {
 					.getImgResID());
 			break;
 		case 3:
-			fragment = new FragmentOne();
+			fragment = new FragmentCodigo();
 			args.putString(FragmentOne.ITEM_NAME, dataList.get(posicion)
 					.getItemName());
 			args.putInt(FragmentOne.IMAGE_RESOURCE_ID, dataList.get(posicion)
 					.getImgResID());
 			break;
 		case 4:
-			fragment = new FragmentTwo();
+			fragment = new FragmentListaContactos();
 			args.putString(FragmentTwo.ITEM_NAME, dataList.get(posicion)
 					.getItemName());
 			args.putInt(FragmentTwo.IMAGE_RESOURCE_ID, dataList.get(posicion)

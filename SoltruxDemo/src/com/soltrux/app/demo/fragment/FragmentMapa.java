@@ -119,37 +119,10 @@ public class FragmentMapa extends Fragment implements LocationListener,OnMapClic
                       }
 //            
 		super.onDestroyView();
-                
-                 
-                
+
 	}
      
-  
-//    @Override
-//	public void onResume() {
-//		super.onResume();
-//                googleMap=null;
-//	}
-	
-//	@Override
-//	public void onPause() {
-//		super.onPause();
-//                googleMap=null;
-//	}
-//	
-//	@Override
-//	public void onDestroy() {
-//		super.onDestroy();
-//                googleMap=null;
-//	}
-//	
-//	@Override
-//	public void onLowMemory() {
-//		super.onLowMemory();
-//                googleMap=null;
-//                
-//	}
-        
+
         
 	 @Override
 	 public View onCreateView(LayoutInflater inflater, ViewGroup container,

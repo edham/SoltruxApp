@@ -4,25 +4,12 @@
 # view res/layout/fragment_layout_mapa.xml #generated:9
 -keep class com.google.android.gms.maps.SupportMapFragment { <init>(...); }
 
-# view AndroidManifest.xml #generated:46
+# view AndroidManifest.xml #generated:55
 -keep class com.soltrux.app.demo.servicio.Servicio { <init>(...); }
 
-# view AndroidManifest.xml #generated:37
+# view AndroidManifest.xml #generated:46
 -keep class com.soltrux.app.demo.ui.MainActivity { <init>(...); }
 
-# onClick res/layout/persona.xml #generated:208
--keepclassmembers class * { *** btnCancelar(...); }
-
-# onClick res/layout/persona.xml #generated:158
--keepclassmembers class * { *** btnFecha(...); }
-
-# onClick res/layout/lista_personas.xml #generated:90
+# onClick res/layout/lista_personas.xml #generated:60
 -keepclassmembers class * { *** btnItinerarios(...); }
-
-# onClick res/layout/persona.xml #generated:190
--keepclassmembers class * { *** btnRegistrar(...); }
-
-# onClick res/layout/lista_personas.xml #generated:55
-# onClick res/layout/persona.xml #generated:66
--keepclassmembers class * { *** btnShare(...); }
 

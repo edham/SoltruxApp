@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    android:background="@drawable/contenido"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+
+    
+
+   
+<LinearLayout 
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:gravity="center_vertical" 
+android:layout_marginLeft="1dp"
+android:layout_marginRight="1dp"
+android:layout_marginTop="1dp"
+android:orientation="horizontal">
+
+    <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" 
+    android:gravity="center"
+    android:layout_marginRight="2dp" 
+    android:layout_weight="2"
+    android:background="@drawable/col1"
+    android:orientation="vertical">
+       <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/str_nombres_persona"
+        android:textStyle="bold"
+        android:gravity="right"
+        android:textSize="18dp"
+        android:textColor="@color/col1_texto" />
+
+    </LinearLayout>
+
+    <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+    android:gravity="center"
+    android:layout_marginLeft="2dp" 
+    android:layout_weight="1"
+    android:background="@drawable/col2"
+    android:orientation="vertical">
+         <TextView
+        android:layout_width="fill_parent"
+        android:id="@+id/lblNombresPersona"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="18dp"
+        android:textColor="@color/col2_texto" />
+
+    </LinearLayout>
+    
+</LinearLayout>
+
+
+
+   
+<LinearLayout 
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:gravity="center_vertical" 
+android:layout_marginLeft="1dp"
+android:layout_marginRight="1dp"
+android:layout_marginTop="1dp"
+android:orientation="horizontal">
+
+    <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" 
+    android:gravity="center"
+    android:layout_marginRight="2dp" 
+    android:layout_weight="2"
+    android:background="@drawable/col1"
+    android:orientation="vertical">
+       <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/str_numero"
+        android:textStyle="bold"
+        android:gravity="right"
+        android:textSize="18dp"
+        android:textColor="@color/col1_texto" />
+
+    </LinearLayout>
+
+    <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+    android:gravity="center"
+    android:layout_marginLeft="2dp" 
+    android:layout_weight="1"
+    android:background="@drawable/col2"
+    android:orientation="vertical">
+         <TextView
+        android:layout_width="fill_parent"
+        android:id="@+id/lblNumero"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="18dp"
+        android:textColor="@color/col2_texto" />
+
+    </LinearLayout>
+    
+</LinearLayout>
+
+
+
+
+<LinearLayout 
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:gravity="center" 
+android:layout_marginLeft="5dp"
+android:layout_marginRight="5dp"
+android:layout_marginTop="2dp"
+android:orientation="horizontal">
+
+    <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" 
+    android:gravity="center"
+    android:layout_marginRight="2dp" 
+    android:layout_weight="1"
+    android:orientation="vertical">
+         <Button
+        android:id="@+id/btnLlamar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"       
+        android:background="@drawable/ic_btn_call"/>	
+
+    </LinearLayout>
+
+    <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" 
+    android:gravity="center"
+    android:layout_marginLeft="2dp" 
+    android:layout_weight="1"
+    android:orientation="vertical">
+        <Button
+        android:id="@+id/btnSMS"
+        android:layout_width="50dp"
+        android:layout_height="50dp"         
+        android:background="@drawable/ic_btn_sms"/>	
+
+    </LinearLayout>
+</LinearLayout>
+ 
+ </LinearLayout>
