@@ -60,6 +60,7 @@ C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\r
 C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\route\Segment.class \
 C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\route\XMLParser.class \
 C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\servicio\Servicio$1.class \
+C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\servicio\Servicio$2.class \
 C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\servicio\Servicio$MyLocationListener.class \
 C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\servicio\Servicio.class \
 C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\classes\com\soltrux\app\demo\sqlite\bdSQLite.class \

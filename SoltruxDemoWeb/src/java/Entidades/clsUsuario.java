@@ -18,12 +18,13 @@ public class clsUsuario {
     private String email;
     private boolean gps;
     private boolean cerro;
+    private boolean telefono;
+    private String numero;
     private Date fecha_actualizacion;
     private Date fecha_registro;
 
-    public clsUsuario(String email, boolean gps) {
+    public clsUsuario(String email) {
         this.email = email;
-        this.gps = gps;
     }
 
     public clsUsuario(int id_usuario) {
@@ -80,6 +81,22 @@ public class clsUsuario {
 
     public void setFecha_registro(Date fecha_registro) {
         this.fecha_registro = fecha_registro;
+    }
+
+    public boolean isTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(boolean telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
     
 }

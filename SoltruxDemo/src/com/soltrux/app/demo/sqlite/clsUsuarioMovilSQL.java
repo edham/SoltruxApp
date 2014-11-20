@@ -45,6 +45,21 @@ public class clsUsuarioMovilSQL {
         bd.close();
     }   
   
+     public  static boolean Actualizar(Context context,boolean cerro) {
+        bdSQLite admin=new bdSQLite(context,null);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        ContentValues registro = new ContentValues();
+        if(cerro)
+            registro.put("bool_cerro",1);
+        else
+            registro.put("bool_cerro",0);
+        int cant = bd.update(NombreTabla, registro, null, null);
+        bd.close();
+        if (cant == 1)
+            return true;
+        
+         return false;
+    }
 
        public static  clsUsuarioMovil Buscar(Context context)
      {

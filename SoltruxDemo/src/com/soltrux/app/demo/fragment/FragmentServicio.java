@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.soltrux.app.demo.servicio.Servicio;
+import com.soltrux.app.demo.sqlite.clsUsuarioMovilSQL;
 import com.soltrux.app.demo.ui.R;
 
 public class FragmentServicio extends Fragment {
@@ -33,7 +34,11 @@ public class FragmentServicio extends Fragment {
                         public void onClick(View v) {
                             btnRegistrar();
                         }
-            });
+                });
+                
+                     if(clsUsuarioMovilSQL.Buscar(this.getActivity()).isBool_cerro())
+                         btnRegistrar.setBackgroundResource(R.drawable.ic_btn_on);
+                    
 		return view;
 	}
 
@@ -41,9 +46,21 @@ public class FragmentServicio extends Fragment {
    
     public void btnRegistrar()
     {
-        btnRegistrar.setBackgroundResource(R.drawable.ic_btn_on);
-        Intent svc = new Intent(this.getActivity(), Servicio.class);
-        this.getActivity().startService(svc);
+        if(!clsUsuarioMovilSQL.Buscar(this.getActivity()).isBool_cerro())
+        {
+            clsUsuarioMovilSQL.Actualizar(this.getActivity(), true);
+            btnRegistrar.setBackgroundResource(R.drawable.ic_btn_on);
+            Intent svc = new Intent(this.getActivity(), Servicio.class);
+            this.getActivity().startService(svc);
+        }
+        else
+        {
+            clsUsuarioMovilSQL.Actualizar(this.getActivity(), false);
+            btnRegistrar.setBackgroundResource(R.drawable.ic_btn_off);
+            Intent svc = new Intent(this.getActivity(), Servicio.class);
+            this.getActivity().stopService(svc);
+        }
+       
     }
     
 }

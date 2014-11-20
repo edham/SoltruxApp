@@ -1,16 +1,129 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+	Strata by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+	<head>
+		<title>Strata by HTML5 UP</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.poptrox.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/init.js"></script>
+                <script src="js/jquery.dataTables.js"></script>
+                <script type="text/javascript">
+                    var count_up_val = 0;
+                    function count_up() {
+                            count_up_val++;
+                            tablaPreguntas();
+                            tablaUsuarios();
+                            tablaPocicion();
+                            setTimeout(count_up, 10000);
+                    }
+                    function thread_start(callback) {
+                            setTimeout(callback, 1);
+                            return true;
+                    }
+                    thread_start(count_up);  
+                    
+                    
+                    
+                     function tablaPocicion()
+                    {
+                         $.ajax({
+                            url: 'prosicion.jsp',
+                            type: 'POST',
+                            success: function (data) {     
+                                     $('#tablaPocicion').html(data);
+                            },
+                            contentType: false,
+                            processData: false
+                        });          
+                     };
+                    function tablaUsuarios()
+                    {
+                         $.ajax({
+                            url: 'usuarios.jsp',
+                            type: 'POST',
+                            success: function (data) {     
+                                     $('#tablaUsuarios').html(data);
+                            },
+                            contentType: false,
+                            processData: false
+                        });          
+                     };
+                     function tablaPreguntas()
+                    {
+                         $.ajax({
+                            url: 'preguntas.jsp',
+                            type: 'POST',
+                            success: function (data) {     
+                                     $('#tablaPreguntas').html(data);
+                            },
+                            contentType: false,
+                            processData: false
+                        });          
+                     };
+                    
+                </script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+                        <link rel="stylesheet" href="css/jquery.dataTables.css" />
+                        
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body id="top">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+				<h1><strong>PERMISOS EN ANDROID</strong><br />
+				<br />
+				by <a href="https://www.facebook.com/edermar"> Eder Haro Araujo</a>.</h1>
+			</header>
+
+		<!-- Main -->
+			<div id="main">
+		
+				<!-- One -->
+					<section id="one">
+                                            <h2>Lista de Usuario</h2>
+						<div id="tablaUsuarios"></div>
+					</section>
+                                <!-- One -->
+					<section id="two">
+                                            <h2>Lista de Preguntas</h2>
+						<div id="tablaPreguntas"></div>
+					</section>
+                                
+                                        <section id="three">
+                                            <h2>Lista de Posicion</h2>
+						<div id="tablaPocicion"></div>
+					</section>
+				
+		
+				
+
+			</div>
+			
+		<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="https://www.facebook.com/soltrux" class="icon fa-facebook"><span class="label">Twitter</span></a></li>
+					<li><a href="https://github.com/edham/SoltruxApp" class="icon fa-github"><span class="label">Github</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>2014 &copy; by Edham Soltrux </li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</footer>
+
+	</body>
 </html>

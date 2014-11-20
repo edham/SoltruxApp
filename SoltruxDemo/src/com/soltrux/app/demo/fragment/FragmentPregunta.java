@@ -63,18 +63,18 @@ public class FragmentPregunta extends Fragment {
    
     public void btnRegistrar()
     {
+         pd = new ProgressDialog(this.getActivity());
+                    pd.setMessage(getString(R.string.str_espere));     
+                    pd.show();    
        if(!txtComentario.getText().toString().equals("") )
        {
            if(utilidades.verificaConexion(this.getActivity()))
             {
-                    pd = new ProgressDialog(this.getActivity());
-                    pd.setMessage(getString(R.string.str_espere));     
-                    pd.show();      
+                     
                 clsUsuarioMovil objUsuario=clsUsuarioMovilSQL.Buscar(this.getActivity());
                 if(objUsuario==null)
                 {                    
-                    boolean gps=utilidades.verificaGPS(this.getActivity());
-                    String dato=http.getUsuario(utilidades.getMail(this.getActivity()),gps);
+                    String dato=http.getUsuario(utilidades.getMail(this.getActivity()));
                     if(!dato.equals("") && !dato.equals(null))
                     {
                         try {
@@ -86,7 +86,7 @@ public class FragmentPregunta extends Fragment {
                                 entidad.setStr_email(objeto.getString("email"));
                                 entidad.setDat_fecha_creacion(new Date(objeto.getLong("fecha_registro")));
                                 entidad.setBool_cerro(false);
-                                entidad.setBool_gps(gps);
+                                entidad.setBool_gps(false);
                                 clsUsuarioMovilSQL.Agregar(this.getActivity(), entidad);
                                 
                                 String id=http.getPregunta(entidad.getInt_id_usuario_movil(), txtComentario.getText().toString());
@@ -95,7 +95,6 @@ public class FragmentPregunta extends Fragment {
                                 if(idJson.getInt("id")!=0)
                                 {
                                     txtComentario.setText("");
-                                     pd.dismiss();  
                                     Toast.makeText(this.getActivity(),getString(R.string.str_pregunta_registro), Toast.LENGTH_LONG).show();
                                   
                                 }
@@ -117,7 +116,7 @@ public class FragmentPregunta extends Fragment {
                             if(idJson.getInt("id")!=0)
                             {
                                 txtComentario.setText("");
-                                pd.dismiss();
+                               
                                 Toast.makeText(this.getActivity(),getString(R.string.str_pregunta_registro), Toast.LENGTH_LONG).show();
                                 
                             }   
@@ -133,7 +132,8 @@ public class FragmentPregunta extends Fragment {
        }
         else
             Toast.makeText(this.getActivity(),getString(R.string.str_ingrese_mensaje), Toast.LENGTH_LONG).show();
-        
+        pd.dismiss();
     }
+     
     
 }

@@ -41,11 +41,10 @@ public class registro extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             JSONObject obj=new JSONObject();
-           if(request.getParameter("mail") != null && request.getParameter("mail") != "" &&
-            request.getParameter("gps") != null && request.getParameter("gps") != "")
+           if(request.getParameter("mail") != null && request.getParameter("mail") != "")
             {
                 
-                clsUsuario objUsuario=clsGestor.getUsuario(new clsUsuario(request.getParameter("mail"),Boolean.parseBoolean(request.getParameter("gps"))));
+                clsUsuario objUsuario=clsGestor.getUsuario(request.getParameter("mail"));
                 
                 if(objUsuario!=null)
                 { 

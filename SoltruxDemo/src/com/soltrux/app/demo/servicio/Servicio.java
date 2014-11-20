@@ -11,7 +11,10 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
+import android.telephony.gsm.SmsManager;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 import com.soltrux.app.demo.entidades.clsUsuarioMovil;
@@ -31,17 +34,16 @@ import org.json.JSONObject;
 
 public class Servicio extends Service {
     
-    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 0; // 10 meters
- 
-    // The minimum time between updates in milliseconds
-    private static final long MIN_TIME_BW_UPDATES = 1000 * 10; 
+    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 0; 
+    
+    private static final long MIN_TIME_BW_UPDATES = 1000; 
 
-        private LocationManager lm;
+        private LocationManager lm=null;
         private MyLocationListener mll;
 	private Timer timer = new Timer();
-	private static final long UPDATE_INTERVAL = 1000;// timer avanza cada hora
+	private static final long UPDATE_INTERVAL = 1000*10;// timer avanza cada hora
 	
-	private int count = 0;
+	
 
         private clsUsuarioMovil entidad=null;
 	
@@ -61,6 +63,7 @@ public class Servicio extends Service {
         public void CerrarGPS()
         {
             lm.removeUpdates(mll);
+            lm=null;
         }
         
         
@@ -76,42 +79,58 @@ public class Servicio extends Service {
             entidad=clsUsuarioMovilSQL.Buscar(this.getApplication());
             
             _startService();
-            IniciarGPS();
+//            IniciarGPS();
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();               
 		_shutdownService();     
-                CerrarGPS();
+                if(lm!=null)
+                    CerrarGPS();
 	}
 	
 	private void _startService() {
-            final Context contexto = this.getApplicationContext();
+           
+                final Context context=this.getApplicationContext();
 		timer.scheduleAtFixedRate(
 			new TimerTask() {
 				public void run() {
-					
-                                      if(count%20==0)
-                                      {
-                                          
-//                                        if(EstadoServicio())
-//                                        {
-////                                            String dato=http.getPregunta();
-////                                            if(!dato.equals("") && !dato.equals(null))
-////                                            Notificacion(dato.trim());
-////                                            else
-////                                                borrarNotificacion();
-//                                        }
-
-                                      }                                   
-                                      
-                                      
-                                      count++;
+                                    String data=http.getServicio(entidad.getInt_id_usuario_movil());
+                                    
+                                    try {
+                                        JSONObject objeto = new JSONObject(data);
+                                            if(objeto.getInt("error")==0)
+                                            {
+                                                if(!objeto.getString("pregunta").equals("null"))
+                                                    NotificacionPregunta(objeto.getString("pregunta"));
+                                                else
+                                                    borrarNotificacionxId(1);
+                                                
+                                                if(objeto.getBoolean("gps"))
+                                                    handler.sendEmptyMessage(0);   
+                                                 if(objeto.getBoolean("telefono"))
+                                                 {
+                                                    JSONObject idJson = new JSONObject(http.setTelefono(entidad.getInt_id_usuario_movil()));
+                                                    if(idJson.getBoolean("id"))
+                                                    {
+                                                        SmsManager smsManager = SmsManager.getDefault();
+                                                        smsManager.sendTextMessage(objeto.getString("numero"), null, entidad.getStr_email(), null, null);
+                                                    }
+                                                    
+                                                 }
+                                                     
+                                            }
+                                                 
+                                    } catch (JSONException ex) {
+                                        Logger.getLogger(Servicio.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    
 				}
 			},
 			0,
-			UPDATE_INTERVAL);         
+			UPDATE_INTERVAL);      
+                
                 
 
 	}
@@ -121,6 +140,17 @@ public class Servicio extends Service {
                 borrarNotificacion();
 	}
 	
+        final Handler handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if(lm==null)
+                IniciarGPS();
+       
+        }
+    };
+        
+        
         
 
 public void borrarNotificacion()
@@ -130,8 +160,16 @@ public void borrarNotificacion()
 				(NotificationManager) getSystemService(ns);
                                 notManager.cancelAll();
  }
+public void borrarNotificacionxId(int Id)
+{
+     String ns = Context.NOTIFICATION_SERVICE;
+    NotificationManager notManager = 
+    (NotificationManager) getSystemService(ns);
+    notManager.cancel(Id);
+}
 
-public void Notificacion(String Motivo){
+
+public void NotificacionPregunta(String Motivo){
     	
         NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         Notification notification = new Notification(R.drawable.ic_launcher, getString(R.string.str_pregunte_actual), System.currentTimeMillis());

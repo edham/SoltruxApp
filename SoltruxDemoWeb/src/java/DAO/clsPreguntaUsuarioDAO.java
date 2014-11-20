@@ -8,8 +8,10 @@ package DAO;
 
 
 import Entidades.clsPreguntaUsuario;
+import Entidades.clsUsuario;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,64 +25,6 @@ import java.util.List;
 public class clsPreguntaUsuarioDAO {
    
     
-    
-//    public static List<clsPreguntaUsuario> listarXUsuario(int IdUsuario) throws Exception 
-//    {
-//        List<clsPreguntaUsuario> lista = null;
-//        
-//        Connection conn =null;
-//        CallableStatement stmt = null;
-//        ResultSet dr = null;
-//        try {
-//             String sql="SELECT i.id_incidente,i.latitud,i.longuitud,i.detalle,i.fecha_registro,i.estado,"
-//                     + "i.foto,ti.id_tipo_incidente,ti.nombre,i.rapides,i.conformidad FROM incidente i inner join tipo_incidente ti "
-//                     + "on i.id_tipo_incidente=ti.id_tipo_incidente where i.id_usuario="+IdUsuario;
-//
-//            conn = clsConexion.getConnection();
-//            stmt = conn.prepareCall(sql);
-//            dr = stmt.executeQuery();
-//
-//            while(dr.next())
-//            {   
-//                if(lista==null)
-//                    lista = new ArrayList<clsPreguntaUsuario>();
-//                
-//                clsTipoIncidente objTipoIncidente = new clsTipoIncidente();
-//                objTipoIncidente.setInt_id_tipo_incidente(dr.getInt(8));
-//                objTipoIncidente.setStr_nombre(dr.getString(9));
-//                
-//                clsPreguntaUsuario objclsPreguntaUsuario = new clsPreguntaUsuario();
-//                objclsPreguntaUsuario.setInt_id_incidente(dr.getInt(1));
-//                objclsPreguntaUsuario.setDou_latitud(dr.getDouble(2));
-//                objclsPreguntaUsuario.setDou_longitud(dr.getDouble(3));
-//                objclsPreguntaUsuario.setStr_detalle(dr.getString(4));
-//                objclsPreguntaUsuario.setDat_fecha_registro(dr.getTimestamp(5));      
-//                objclsPreguntaUsuario.setInt_estado(dr.getInt(6)); 
-//                objclsPreguntaUsuario.setByte_foto(dr.getBytes(7));
-//                objclsPreguntaUsuario.setObjTipoIncidente(objTipoIncidente);
-//                objclsPreguntaUsuario.setInt_rapides(dr.getInt(10));
-//                objclsPreguntaUsuario.setInt_conformidad(dr.getInt(10));
-//                
-//                lista.add(objclsPreguntaUsuario);                
-//            }
-//
-//       } catch (Exception e) {
-//    
-//                throw new Exception("Listar Cargos "+e.getMessage(), e);
-//        
-//        }
-//        finally{
-//            try {
-//                dr.close();
-//                stmt.close();
-//                conn.close();
-//            } catch (Exception e) {
-//            }
-//        }
-//        return lista;
-//    }
-    
-  
      public  static int insertar(clsPreguntaUsuario entidad) throws Exception
     {
         int rpta = 0;
@@ -93,6 +37,7 @@ public class clsPreguntaUsuarioDAO {
                    + "(?,?,0,now())";
            
             conn = clsConexion.getConnection();
+            conn.setAutoCommit(false);
             stmt = conn.prepareCall(sql);
             stmt.setString(1, entidad.getPregunta());
             stmt.setInt(2, entidad.getObjUsuario().getId_usuario());
@@ -102,11 +47,20 @@ public class clsPreguntaUsuarioDAO {
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next()){
                 rpta=rs.getInt(1);
+                 sql="update usuario set fecha_actualizacion=now() where id_usuario=?;";
+                    PreparedStatement psGPS = conn.prepareCall(sql);           
+                    psGPS.setInt(1, entidad.getObjUsuario().getId_usuario());
+                    psGPS.execute();
+                    psGPS.close();
             }
             rs.close();
             
             
+         conn.commit();
         } catch (Exception e) {
+             if (conn != null) {
+                    conn.rollback();
+                }
             throw new Exception("Insertar"+e.getMessage(), e);
         }
         finally{
@@ -118,39 +72,102 @@ public class clsPreguntaUsuarioDAO {
         }
         return rpta;
     }
-//    
-//    public static boolean calificar(clsPreguntaUsuario entidad) throws Exception
-//    {
-//        boolean rpta = false;
-//        Connection conn =null;
-//        CallableStatement stmt = null;
-//        try {
-//             String sql="UPDATE incidente SET rapides = ?,conformidad = ? WHERE id_incidente = ? and id_usuario = ?";
-//            conn = clsConexion.getConnection();
-//            conn.setAutoCommit(false);
-//            stmt = conn.prepareCall(sql);
-//            stmt.setInt(1, entidad.getInt_rapides());
-//            stmt.setInt(2, entidad.getInt_conformidad());
-//            stmt.setInt(3, entidad.getInt_id_incidente());
-//            stmt.setInt(4, entidad.getObjUsuario().getInt_id_usuario());
-//            rpta = stmt.executeUpdate() == 1;          
-//            conn.commit();
-//            
-//        } catch (Exception e) {
-//             if (conn != null) {
-//                    conn.rollback();
-//                }
-//            throw new Exception("Insertar"+e.getMessage(), e);
-//        }
-//        finally{
-//            try {
-//                stmt.close();
-//                conn.close();
-//            } catch (SQLException e) {
-//            }
-//        }
-//        return rpta;
-//    }
      
-     
+       public static clsPreguntaUsuario getActiva() throws Exception 
+    {
+        clsPreguntaUsuario  entidad = null;
+        
+        Connection conn =null;
+        CallableStatement stmt = null;
+        ResultSet dr = null;
+        try {
+             String sql="select id_pregunta_usuario,pregunta,fecha_creacion "
+                     + "from pregunta_usuario where estado = 1 order by id_pregunta_usuario desc limit 1";
+
+            conn = clsConexion.getConnection();
+            conn.setAutoCommit(false);
+            stmt = conn.prepareCall(sql);
+            dr = stmt.executeQuery();
+
+            if(dr.next())
+            {   //                
+                entidad = new clsPreguntaUsuario();
+                entidad.setId_pregunta_usuario(dr.getInt(1));
+                entidad.setPregunta(dr.getString(2));
+                entidad.setFecha_creacion(dr.getTimestamp(3));
+            }
+            
+
+        conn.commit();
+        } catch (Exception e) {
+             if (conn != null) {
+                    conn.rollback();
+                }
+            throw new Exception("Insertar"+e.getMessage(), e);
+        }
+        finally{
+            try {
+                dr.close();
+                stmt.close();
+                conn.close();
+            } catch (Exception e) {
+            }
+        }
+        return entidad;
+    }
+       
+    
+    public static List<clsPreguntaUsuario> lista() throws Exception 
+    {
+        List<clsPreguntaUsuario>  lista = null;
+        
+        Connection conn =null;
+        CallableStatement stmt = null;
+        ResultSet dr = null;
+        try {
+             String sql="SELECT pu.id_pregunta_usuario,pu.pregunta,pu.fecha_creacion,"
+                     + "u.id_usuario,u.email FROM  pregunta_usuario pu inner join usuario u "
+                     + "on pu.id_usuario=u.id_usuario where pu.estado<2;";
+
+            conn = clsConexion.getConnection();
+            conn.setAutoCommit(false);
+            stmt = conn.prepareCall(sql);
+            dr = stmt.executeQuery();
+
+            while(dr.next())
+            {   //                
+                if(lista==null)
+                    lista=new ArrayList<clsPreguntaUsuario>();
+                
+                clsUsuario usuario = new clsUsuario();
+                usuario.setId_usuario(dr.getInt(4));
+                usuario.setEmail(dr.getString(5));
+                
+                clsPreguntaUsuario entidad = new clsPreguntaUsuario();
+                entidad.setId_pregunta_usuario(dr.getInt(1));
+                entidad.setPregunta(dr.getString(2));
+                entidad.setFecha_creacion(dr.getTimestamp(3));
+                entidad.setObjUsuario(usuario);
+                lista.add(entidad);
+            }
+            
+
+        conn.commit();
+        } catch (Exception e) {
+             if (conn != null) {
+                    conn.rollback();
+                }
+            throw new Exception("Insertar"+e.getMessage(), e);
+        }
+        finally{
+            try {
+                dr.close();
+                stmt.close();
+                conn.close();
+            } catch (Exception e) {
+            }
+        }
+        return lista;
+    }
+
 }

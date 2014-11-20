@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.soltrux.app.demo.entidades.clsUsuarioMovil;
 import com.soltrux.app.demo.http.http;
+import com.soltrux.app.demo.servicio.Servicio;
 import com.soltrux.app.demo.sqlite.clsUsuarioMovilSQL;
 import com.soltrux.app.demo.utilidades.utilidades;
 import java.util.Date;
@@ -42,8 +43,7 @@ public class CargandoActivity extends Activity {
                 {
                     if(utilidades.verificaConexion(this))
                     {
-                        boolean gps=utilidades.verificaGPS(this);
-                        String dato=http.getUsuario(utilidades.getMail(this),gps);
+                        String dato=http.getUsuario(utilidades.getMail(this));
                         if(!dato.equals("") && !dato.equals(null))
                         {
                             try {
@@ -55,7 +55,7 @@ public class CargandoActivity extends Activity {
                                     entidad.setStr_email(objeto.getString("email"));
                                     entidad.setDat_fecha_creacion(new Date(objeto.getLong("fecha_registro")));
                                     entidad.setBool_cerro(false);
-                                    entidad.setBool_gps(gps);
+                                    entidad.setBool_gps(false);
                                     clsUsuarioMovilSQL.Agregar(this, entidad);
 
                                 }
@@ -65,7 +65,20 @@ public class CargandoActivity extends Activity {
                             }
                     }
                 }
-//                else
+                else
+                {
+                    if(clsUsuarioMovilSQL.Buscar(this).isBool_cerro())
+                    {
+                        Intent svc = new Intent(this, Servicio.class);
+                        startService(svc);
+                    }
+                    else
+                    {
+                        Intent svc = new Intent(this, Servicio.class);
+                        stopService(svc);
+                    }
+            
+                }
 //                    estado=true;
                 
                 
