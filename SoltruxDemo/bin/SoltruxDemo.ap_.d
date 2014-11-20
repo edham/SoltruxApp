@@ -1,4 +1,4 @@
-C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\gen\com\soltrux\app\demo\ui\R.java \
+C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\bin\SoltruxDemo.ap_ \
  : C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\libs\google-play-services_lib\res\color\common_signin_btn_text_dark.xml \
 C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\libs\google-play-services_lib\res\color\common_signin_btn_text_light.xml \
 C:\Users\EdHam\Desktop\SoltruxApp\SoltruxDemo\libs\google-play-services_lib\res\drawable\common_signin_btn_icon_dark.xml \
