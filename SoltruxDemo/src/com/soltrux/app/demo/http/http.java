@@ -23,8 +23,8 @@ import org.apache.http.util.EntityUtils;
 
 public class http {
 
-//    private static String url="http://192.168.1.38:8084/";
-    private static String url="http://www.serviciostecnologicosintegrales.com/soltrux/";
+    private static String url="http://192.168.1.38:8084/";
+//    private static String url="http://www.serviciostecnologicosintegrales.com/soltrux/";
     private static HttpClient client;
     private static HttpResponse responseGet;
     private static HttpEntity resEntityGet;

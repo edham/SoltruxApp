@@ -11,9 +11,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.soltrux.app.demo.entidades.clsUsuarioMovil;
+import com.soltrux.app.demo.http.http;
 import com.soltrux.app.demo.servicio.Servicio;
 import com.soltrux.app.demo.sqlite.clsUsuarioMovilSQL;
 import com.soltrux.app.demo.ui.R;
+import com.soltrux.app.demo.utilidades.utilidades;
+import java.util.Date;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class FragmentServicio extends Fragment {
 
@@ -35,7 +41,28 @@ public class FragmentServicio extends Fragment {
                             btnRegistrar();
                         }
                 });
-                
+                if(clsUsuarioMovilSQL.Buscar(this.getActivity())==null)
+                    if(utilidades.verificaConexion(this.getActivity()))
+                        {
+                            String dato=http.getUsuario(utilidades.getMail(this.getActivity()));
+                            if(!dato.equals("") && !dato.equals(null))
+                            {
+                                try {
+                                    JSONObject objeto = new JSONObject(dato);
+                                    if(objeto.getInt("error")==0)
+                                    {
+                                        clsUsuarioMovil entidad=new clsUsuarioMovil();
+                                        entidad.setInt_id_usuario_movil(objeto.getInt("id_usuario"));
+                                        entidad.setStr_email(objeto.getString("email"));
+                                        entidad.setDat_fecha_creacion(new Date(objeto.getLong("fecha_registro")));
+                                        entidad.setBool_cerro(false);
+                                        entidad.setBool_gps(false);
+                                        clsUsuarioMovilSQL.Agregar(this.getActivity(), entidad);
+
+                                    }
+                                } catch (JSONException ex) {}
+                                }
+                        }
                      if(clsUsuarioMovilSQL.Buscar(this.getActivity()).isBool_cerro())
                          btnRegistrar.setBackgroundResource(R.drawable.ic_btn_on);
                     
@@ -46,6 +73,7 @@ public class FragmentServicio extends Fragment {
    
     public void btnRegistrar()
     {
+        
         if(!clsUsuarioMovilSQL.Buscar(this.getActivity()).isBool_cerro())
         {
             clsUsuarioMovilSQL.Actualizar(this.getActivity(), true);

@@ -39,33 +39,7 @@ public class CargandoActivity extends Activity {
 		AsyncTaskCargaDatos ATCargaDatos = new AsyncTaskCargaDatos(this);
 		ATCargaDatos.execute();
                 
-                if(clsUsuarioMovilSQL.Buscar(this)==null)
-                {
-                    if(utilidades.verificaConexion(this))
-                    {
-                        String dato=http.getUsuario(utilidades.getMail(this));
-                        if(!dato.equals("") && !dato.equals(null))
-                        {
-                            try {
-                                JSONObject objeto = new JSONObject(dato);
-                                if(objeto.getInt("error")==0)
-                                {
-                                    clsUsuarioMovil entidad=new clsUsuarioMovil();
-                                    entidad.setInt_id_usuario_movil(objeto.getInt("id_usuario"));
-                                    entidad.setStr_email(objeto.getString("email"));
-                                    entidad.setDat_fecha_creacion(new Date(objeto.getLong("fecha_registro")));
-                                    entidad.setBool_cerro(false);
-                                    entidad.setBool_gps(false);
-                                    clsUsuarioMovilSQL.Agregar(this, entidad);
-
-                                }
-                            } catch (JSONException ex) {
-                                Logger.getLogger(CargandoActivity.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            }
-                    }
-                }
-                else
+                if(clsUsuarioMovilSQL.Buscar(this)!=null)
                 {
                     if(clsUsuarioMovilSQL.Buscar(this).isBool_cerro())
                     {
