@@ -1,7 +1,10 @@
 package com.soltrux.app.demo.ui;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -25,9 +28,12 @@ import android.widget.Toast;
 import com.soltrux.app.demo.entidades.clsDrawerItem;
 import com.soltrux.app.demo.fragment.FragmentCodigo;
 import com.soltrux.app.demo.fragment.FragmentListaContactos;
+import com.soltrux.app.demo.fragment.FragmentListaCuentas;
 import com.soltrux.app.demo.fragment.FragmentListaPersonas;
 import com.soltrux.app.demo.fragment.FragmentMapa;
-import com.soltrux.app.demo.fragment.FragmentOne;
+import com.soltrux.app.demo.fragment.FragmentPregunta;
+import com.soltrux.app.demo.fragment.FragmentServicio;
+import com.soltrux.app.demo.utilidades.utilidades;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,7 +68,7 @@ public class MainActivity extends FragmentActivity {
 		// Add Drawer Item to dataList
                 
                 
-		dataList.add(new clsDrawerItem("Message", R.drawable.ic_action_email));
+		dataList.add(new clsDrawerItem(utilidades.getMail(this), R.drawable.ic_action_email));
 		dataList.add(new clsDrawerItem(getString(R.string.str_mapa), R.drawable.ic_action_good));
 		dataList.add(new clsDrawerItem(getString(R.string.str_crud_sqlite), R.drawable.ic_action_gamepad));
 		dataList.add(new clsDrawerItem(getString(R.string.str_gernerar_codigo), R.drawable.ic_action_labels));                
@@ -126,19 +132,32 @@ public class MainActivity extends FragmentActivity {
     }
 	public void SelectItem() {
 
+            boolean opcion=true;
 		Fragment fragment = null;
 		Bundle args = new Bundle();
 		switch (posicion) {
 		case 0:
                         posicion=0;
-			fragment = new FragmentOne();
-			args.putString(FragmentOne.ITEM_NAME, dataList.get(posicion)
-					.getItemName());
-			args.putInt(FragmentOne.IMAGE_RESOURCE_ID, dataList.get(posicion)
-					.getImgResID());
+			fragment = new FragmentListaCuentas();
 			break;
 		case 1:
-                       fragment = new FragmentMapa();
+                        if(utilidades.verificaConexion(this))
+                        {
+                            if(utilidades.verificaGPS(this))
+                            {
+                                 fragment = new FragmentMapa();
+                            }
+                            else
+                            {
+                                Toast.makeText(MainActivity.this, "GPS", Toast.LENGTH_SHORT).show();
+                                opcion=false;
+                            }
+                        }
+                        else
+                        {
+                            Toast.makeText(MainActivity.this, "Internet", Toast.LENGTH_SHORT).show();
+                            opcion=false;
+                        }
 			break;
 		case 2:
                     
@@ -151,38 +170,45 @@ public class MainActivity extends FragmentActivity {
 			fragment = new FragmentListaContactos();
 			break;
 		case 5:
-			fragment = new FragmentOne();
-			args.putString(FragmentOne.ITEM_NAME, dataList.get(posicion)
-					.getItemName());
-			args.putInt(FragmentOne.IMAGE_RESOURCE_ID, dataList.get(posicion)
-					.getImgResID());
+			fragment = new FragmentPregunta();
 			break;
 		case 6:
-			fragment = new FragmentOne();
-			args.putString(FragmentOne.ITEM_NAME, dataList.get(posicion)
-					.getItemName());
-			args.putInt(FragmentOne.IMAGE_RESOURCE_ID, dataList.get(posicion)
-					.getImgResID());
+			fragment = new FragmentServicio();
 			break;
-	
-	
-	
+                    
+                case 7:
+                        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+			alert.setTitle(getString(R.string.str_desea_sms));
+                        alert.setPositiveButton(getString(R.string.btn_agregar), new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {  
+                                    android.os.Process.killProcess(android.os.Process.myPid());
+                                    MainActivity.this.finish();
+                                    Intent intent = new Intent(Intent.ACTION_MAIN);
+                                    intent.addCategory(Intent.CATEGORY_HOME);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    startActivity(intent);
 
-
-
+                                }});
+                        alert.setNegativeButton(getString(R.string.btn_cancelar), new DialogInterface.OnClickListener() {  
+                               public void onClick(DialogInterface dialog, int whichButton) {    
+                            }});
+                               alert.show();
+                        break;
 		default:
 			break;
 		}                
                 
-                fragment.setArguments(args);		
-                FragmentTransaction fragmentTransaction = frgManager.beginTransaction();
-                fragmentTransaction.replace(R.id.content_frame, fragment);
-                fragmentTransaction.commit();        
-
-                mDrawerList.setItemChecked(posicion, true);
-                setTitle(dataList.get(posicion).getItemName());
-                mDrawerLayout.closeDrawer(mDrawerList);
-
+                if(posicion!=7 && opcion)
+                {
+                    fragment.setArguments(args);		
+                    FragmentTransaction fragmentTransaction = frgManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.content_frame, fragment);
+                    fragmentTransaction.commit();        
+                    mDrawerList.setItemChecked(posicion, true);
+                    setTitle(dataList.get(posicion).getItemName());
+                }
+               
+                mDrawerLayout.closeDrawer(mDrawerList);    
 	}
 
 	@Override
@@ -211,13 +237,10 @@ public class MainActivity extends FragmentActivity {
 			ListView.OnItemClickListener {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position,long id) {
-                    if(posicion!=position)
-                    {
+                    
                         posicion=position;
 			SelectItem();
-                    }
-                    else
-                        Toast.makeText(MainActivity.this, "Seleccione Otro", Toast.LENGTH_SHORT).show();
+                   
 
 		}
 	}

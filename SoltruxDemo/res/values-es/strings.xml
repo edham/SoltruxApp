@@ -27,7 +27,7 @@
      <string name="btn_aceptar">Aceptar</string>
      <string name="btn_actualizar">Actualizar</string>
      <string name="btn_generar">Generar Codigo</string>
-      <string name="btn_aceptar">Enviar</string>
+      <string name="btn_aceptar">Aceptar</string>
       
       <string name="str_compartir_con">Compartir con</string>
      <string name="str_compartir_via">Compartir via</string>
@@ -47,6 +47,7 @@
      <string name="str_desea_llamar">Desea Llamar?</string>
      <string name="str_desea_sms">Desea enviar un SMS?</string>
      
+     <string name="str_desea_sms">Desea Salir?</string>
      
      <string name="str_genrardor_codigo">Generador de Codigo</string>
      <string name="str_escriba_texto">Escriba un Texto</string>
@@ -60,6 +61,13 @@
     <string name="str_salir">SALIR</string>
     
     <string name="str_ingrese_mensaje">Ingrese mensaje de texto</string>
+    
+     <string name="str_ingresar_pregunta">Ingresar una pregunta referente al tema de hoy</string>
+     
+     <string name="str_conexion_internet">Comprueba tu conectividad a Internet</string>
+    
+    <string name="str_pregunta_registro">Se registro Correctamente</string>
+    <string name="str_pregunta_error">Error al Registrar</string>
     
 <string-array name="array_sexo">
 <item >Hombre</item>

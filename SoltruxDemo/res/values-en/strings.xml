@@ -26,7 +26,7 @@
      <string name="btn_aceptar">OK</string>
      <string name="btn_actualizar">Update</string>
      <string name="btn_generar">Generate Code</string>
-      <string name="btn_aceptar">Send</string>
+      <string name="btn_aceptar">Accept</string>
       
      <string name="str_compartir_con">Share with</string>
      <string name="str_compartir_via">Share trough</string>
@@ -45,7 +45,7 @@
      
      <string name="str_desea_llamar">Call?</string>
      <string name="str_desea_sms">Send to SMS?</string>
-     
+     <string name="str_desea_sms">Want to Exit?</string>
      
      <string name="str_genrardor_codigo">Code Generator</string>
      <string name="str_escriba_texto">Write a text</string>
@@ -59,6 +59,13 @@
      <string name="str_salir">EXIT</string>
     
      <string name="str_ingrese_mensaje">Enter text message</string>
+     
+     <string name="str_ingresar_pregunta">Add a question about todays theme</string>
+     
+     <string name="str_conexion_internet">Check your Internet conectivity</string>
+     
+     <string name="str_pregunta_registro">Registered successfully</string>
+     <string name="str_pregunta_error">Failed to Register</string>
      
 <string-array name="array_sexo">
 <item >Man</item>

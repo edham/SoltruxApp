@@ -3,15 +3,20 @@ package com.soltrux.app.demo.utilidades;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Context;
+import static android.content.Context.LOCATION_SERVICE;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import com.soltrux.app.demo.entidades.clsCuenta;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 
 public class utilidades {
@@ -34,6 +39,23 @@ public class utilidades {
                    Log.i("Exception", "Exception:"+e) ; 
               }
       return possibleEmail;
+  }
+  
+   public static List<clsCuenta> listCuentas(Context context) {
+      
+       List<clsCuenta> list=new ArrayList<clsCuenta>();
+         
+           try{
+               Account[] accounts = AccountManager.get(context).getAccounts();
+                   for (Account account : accounts) 
+                      list.add(new clsCuenta(account.type,account.name));
+              }
+              catch(Exception e)
+              {
+                   Log.i("Exception", "Exception:"+e) ; 
+              }
+            
+      return list;
   }
   
   public static int getEdad(Date pNacio){
@@ -83,6 +105,17 @@ public static boolean verificaConexion(Context context) {
     }
     return bConectado;
 }
+
+
+public static boolean verificaGPS(Context context) {
+    LocationManager locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);    
+    if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) 
+         return true;
+    return false;
+}
+
+
+
 
 
      public static void setLocale(Context context,String lang) { 

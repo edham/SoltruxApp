@@ -6,30 +6,23 @@
 
 package com.soltrux.app.demo.entidades;
 
+import java.util.Date;
+
 /**
  *
  * @author Toditos
  */
 public class clsUsuarioMovil {
     private int int_id_usuario_movil;
-    private String str_nombres;
-    private String str_apellidos;
     private String str_email;
-    private String str_telefono;
-   
-
-    public clsUsuarioMovil(String cadena) {
-          String [] entidad = cadena.split("\\<+parametro+>");          
-            this.int_id_usuario_movil = Integer.parseInt(entidad[0].trim());
-            this.str_nombres = entidad[1].trim();
-            this.str_apellidos = entidad[2].trim();            
-            this.str_telefono = entidad[3].trim();
-            this.str_email = entidad[4].trim();
-          
-    }
+    private boolean bool_gps;
+    private boolean bool_cerro;
+    private Date dat_fecha_creacion;
 
     
     public clsUsuarioMovil() {
+        this.bool_cerro=false;
+        this.bool_gps=false;
     }
 
     public int getInt_id_usuario_movil() {
@@ -40,21 +33,7 @@ public class clsUsuarioMovil {
         this.int_id_usuario_movil = int_id_usuario_movil;
     }
 
-    public String getStr_nombres() {
-        return str_nombres;
-    }
 
-    public void setStr_nombres(String str_nombres) {
-        this.str_nombres = str_nombres;
-    }
-
-    public String getStr_apellidos() {
-        return str_apellidos;
-    }
-
-    public void setStr_apellidos(String str_apellidos) {
-        this.str_apellidos = str_apellidos;
-    }
 
     public String getStr_email() {
         return str_email;
@@ -64,13 +43,31 @@ public class clsUsuarioMovil {
         this.str_email = str_email;
     }
 
-    public String getStr_telefono() {
-        return str_telefono;
+    public boolean isBool_gps() {
+        return bool_gps;
     }
 
-    public void setStr_telefono(String str_telefono) {
-        this.str_telefono = str_telefono;
+    public void setBool_gps(boolean bool_gps) {
+        this.bool_gps = bool_gps;
     }
+
+    public Date getDat_fecha_creacion() {
+        return dat_fecha_creacion;
+    }
+
+    public void setDat_fecha_creacion(Date dat_fecha_creacion) {
+        this.dat_fecha_creacion = dat_fecha_creacion;
+    }
+
+    public boolean isBool_cerro() {
+        return bool_cerro;
+    }
+
+    public void setBool_cerro(boolean bool_cerro) {
+        this.bool_cerro = bool_cerro;
+    }
+
+    
 
   
     

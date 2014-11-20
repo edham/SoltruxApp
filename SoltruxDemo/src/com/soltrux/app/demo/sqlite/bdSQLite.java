@@ -13,10 +13,10 @@ public class bdSQLite extends SQLiteOpenHelper {
 
        private static final String CREATE_USUARIO = "CREATE TABLE USUARIO ("
                         + "int_id_usuario_movil integer NOT NULL PRIMARY KEY,"
-                        + "str_nombres text NOT NULL,"
-                        + "str_apellidos text NOT NULL,"
                         + "str_email text NOT NULL,"
-                        + "str_telefono text NOT NULL);";
+                        + "bool_gps INTEGER NOT NULL,"
+                        + "bool_cerro INTEGER NOT NULL,"
+                        + "dat_fecha_creacion numeric NOT NULL);";
       
 
     private static final String CREATE_PERSONA ="CREATE TABLE PERSONA ("

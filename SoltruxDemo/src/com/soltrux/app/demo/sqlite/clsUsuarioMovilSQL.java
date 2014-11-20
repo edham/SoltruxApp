@@ -11,6 +11,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.soltrux.app.demo.entidades.clsUsuarioMovil;
+import java.util.Date;
 
 
 
@@ -28,10 +29,18 @@ public class clsUsuarioMovilSQL {
         SQLiteDatabase bd=admin.getWritableDatabase();
         ContentValues registro=new ContentValues();
         registro.put("int_id_usuario_movil",entidad.getInt_id_usuario_movil());
-        registro.put("str_nombres",entidad.getStr_nombres());
-        registro.put("str_apellidos",entidad.getStr_apellidos());;
         registro.put("str_email",entidad.getStr_email());
-        registro.put("str_telefono",entidad.getStr_telefono());
+        if(entidad.isBool_gps())
+            registro.put("bool_gps",1);
+        else
+            registro.put("bool_gps",0);
+        
+        if(entidad.isBool_cerro())
+            registro.put("bool_cerro",1);
+        else
+            registro.put("bool_cerro",0);
+         
+        registro.put("dat_fecha_creacion",entidad.getDat_fecha_creacion().getTime());
         bd.insert(NombreTabla, null, registro);
         bd.close();
     }   
@@ -42,8 +51,8 @@ public class clsUsuarioMovilSQL {
         clsUsuarioMovil  entidad=null;
         bdSQLite admin=new bdSQLite(context,null); 
         SQLiteDatabase bd=admin.getWritableDatabase();
-          String query="select int_id_usuario_movil,str_nombres,str_apellidos,"
-                  + "str_email,str_telefono from "+NombreTabla;
+          String query="select int_id_usuario_movil,str_email,bool_gps,"
+                  + "bool_cerro,dat_fecha_creacion from "+NombreTabla;
         Cursor fila=bd.rawQuery(query,null);
 
         if (fila.moveToFirst())
@@ -51,10 +60,15 @@ public class clsUsuarioMovilSQL {
             
             entidad = new clsUsuarioMovil();
             entidad.setInt_id_usuario_movil(fila.getInt(0));
-            entidad.setStr_nombres(fila.getString(1));
-            entidad.setStr_apellidos(fila.getString(2));
-            entidad.setStr_email(fila.getString(4));
-            entidad.setStr_telefono(fila.getString(4));
+            entidad.setStr_email(fila.getString(1));
+            
+            if(fila.getInt(2)==1)
+            entidad.setBool_gps(true);
+            
+            if(fila.getInt(3)==1)
+            entidad.setBool_cerro(true);
+            
+            entidad.setDat_fecha_creacion(new Date(fila.getLong(4)));
            
         }
         bd.close();   
