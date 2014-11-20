@@ -68,15 +68,15 @@ public class MainActivity extends FragmentActivity {
 		// Add Drawer Item to dataList
                 
                 
-		dataList.add(new clsDrawerItem(utilidades.getMail(this), R.drawable.ic_action_email));
-		dataList.add(new clsDrawerItem(getString(R.string.str_mapa), R.drawable.ic_action_good));
-		dataList.add(new clsDrawerItem(getString(R.string.str_crud_sqlite), R.drawable.ic_action_gamepad));
-		dataList.add(new clsDrawerItem(getString(R.string.str_gernerar_codigo), R.drawable.ic_action_labels));                
-		dataList.add(new clsDrawerItem(getString(R.string.str_contactos), R.drawable.ic_action_cloud));
-                dataList.add(new clsDrawerItem(getString(R.string.str_agregar_pregunta), R.drawable.ic_action_search));                
+		dataList.add(new clsDrawerItem(utilidades.getMail(this), R.drawable.ic_action_count));
+		dataList.add(new clsDrawerItem(getString(R.string.str_mapa), R.drawable.ic_action_map));
+		dataList.add(new clsDrawerItem(getString(R.string.str_crud_sqlite), R.drawable.ic_action_crud));
+		dataList.add(new clsDrawerItem(getString(R.string.str_gernerar_codigo), R.drawable.ic_action_qr));                
+		dataList.add(new clsDrawerItem(getString(R.string.str_contactos), R.drawable.ic_action_group));
+                dataList.add(new clsDrawerItem(getString(R.string.str_agregar_pregunta), R.drawable.ic_action_quest));                
 		
-		dataList.add(new clsDrawerItem(getString(R.string.str_servicio), R.drawable.ic_action_camera));
-		dataList.add(new clsDrawerItem(getString(R.string.str_salir), R.drawable.ic_action_video));
+		dataList.add(new clsDrawerItem(getString(R.string.str_servicio), R.drawable.ic_action_service));
+		dataList.add(new clsDrawerItem(getString(R.string.str_salir), R.drawable.ic_action_exit));
 		
 		adapter = new CustomDrawerAdapter(this, R.layout.custom_drawer_item,
 				dataList);
@@ -123,7 +123,7 @@ public class MainActivity extends FragmentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case R.id.action_settings:  
-                Toast.makeText(MainActivity.this, "Seleccione Otro", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, "Seleccione Otro", Toast.LENGTH_SHORT).show();
             return true;
    
         default:
@@ -149,13 +149,13 @@ public class MainActivity extends FragmentActivity {
                             }
                             else
                             {
-                                Toast.makeText(MainActivity.this, "GPS", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Active GPS", Toast.LENGTH_SHORT).show();
                                 opcion=false;
                             }
                         }
                         else
                         {
-                            Toast.makeText(MainActivity.this, "Internet", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Active Internet", Toast.LENGTH_SHORT).show();
                             opcion=false;
                         }
 			break;
