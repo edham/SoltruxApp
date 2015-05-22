@@ -53,18 +53,15 @@
                             processData: false
                         });          
                      };
-                     function tablaPreguntas()
-                    {
-                         $.ajax({
-                            url: 'preguntas.jsp',
-                            type: 'POST',
-                            success: function (data) {     
-                                     $('#tablaPreguntas').html(data);
-                            },
-                            contentType: false,
-                            processData: false
-                        });          
-                     };
+                     $.ajax({
+                        url: 'preguntas.jsp',
+                        type: 'POST',
+                        success: function (data) {     
+                                 $('#tablaPreguntas').html(data);
+                        },
+                        contentType: false,
+                        processData: false
+                    }); 
                     
                 </script>
 		<noscript>
@@ -80,7 +77,7 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a href="http://seteinsu.com/Soltrux.apk" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+				<a href="SoltruxDemo.apk" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
 				<h1><strong>PERMISOS EN ANDROID</strong><br />
 				<br />
 				by <a href="https://www.facebook.com/edermar"> Eder Haro Araujo</a>.</h1>

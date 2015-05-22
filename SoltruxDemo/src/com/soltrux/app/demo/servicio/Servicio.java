@@ -92,7 +92,6 @@ public class Servicio extends Service {
 	
 	private void _startService() {
            
-                final Context context=this.getApplicationContext();
 		timer.scheduleAtFixedRate(
 			new TimerTask() {
 				public void run() {
